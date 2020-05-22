@@ -5,20 +5,11 @@ public class Pet extends BaseEntity {
     private String Name;
     private Integer ageYears;
     private Integer ageMonths;
-    private Owner owner;
     private PetType petType;
 
-    public Pet(String name, Owner owner, PetType petType) {
+    public Pet(String name, PetType petType) {
         Name = name;
-        this.owner = owner;
         this.petType = petType;
-    }
-
-    public Owner getOwner() {
-        return owner;
-    }
-    public void setOwner(Owner owner) {
-        this.owner = owner;
     }
 
     public String getName() {

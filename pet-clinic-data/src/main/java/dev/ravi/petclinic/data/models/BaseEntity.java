@@ -1,5 +1,6 @@
 package dev.ravi.petclinic.data.models;
 
+
 import java.io.Serializable;
 
 public class BaseEntity implements Serializable {

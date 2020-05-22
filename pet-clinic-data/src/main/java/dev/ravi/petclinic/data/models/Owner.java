@@ -1,6 +1,7 @@
 package dev.ravi.petclinic.data.models;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Owner extends Person{
@@ -9,6 +10,7 @@ public class Owner extends Person{
 
     public Owner(String firstName, String lastName) {
         super(firstName, lastName);
+        petList = new ArrayList<>();
     }
 
     public List<Pet> getPetList() {
