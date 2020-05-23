@@ -6,5 +6,30 @@
 </head>
 <body>
 <h1 th:text="${ownerHeading}">Main Heading comes from Controller</h1>
+<div>
+    <a target="_parent" href="/">Back to Index</a>
+</div>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="owner : ${owners}">
+                <td>
+                    <a th:href=" '/owners/' + ${owner.id}">
+                    <span th:text="${owner.id}">  </span>
+                    </a>
+                </td>
+                <td th:text="${owner.firstName}"></td>
+                <td th:text="${owner.lastName}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

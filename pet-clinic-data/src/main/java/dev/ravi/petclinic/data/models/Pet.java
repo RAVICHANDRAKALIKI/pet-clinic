@@ -2,22 +2,31 @@ package dev.ravi.petclinic.data.models;
 
 public class Pet extends BaseEntity {
 
-    private String Name;
+    private String name;
     private Integer ageYears;
     private Integer ageMonths;
     private PetType petType;
 
     public Pet(String name, PetType petType) {
-        Name = name;
+        this.name = name;
+        this.petType = petType;
+        this.ageMonths = Integer.valueOf(0);
+        this.ageYears = Integer.valueOf(0);
+    }
+
+    public Pet(String name, Integer ageYears, Integer ageMonths, PetType petType) {
+        this.name = name;
+        this.ageYears = ageYears;
+        this.ageMonths = ageMonths;
         this.petType = petType;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public PetType getPetType() {

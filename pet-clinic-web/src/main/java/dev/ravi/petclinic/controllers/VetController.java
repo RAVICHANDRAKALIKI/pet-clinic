@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class VetController {
 
     private VetService vetService;
-
-    @Autowired
     public VetController(VetService vetService) {
         this.vetService = vetService;
     }
@@ -23,6 +21,7 @@ public class VetController {
     public String getList(Model model) {
         model.addAttribute(StringConstants.APP_NAME_ATTR, StringConstants.APPLICATION_NAME);
         model.addAttribute("vetHeading", "Vets View");
+        model.addAttribute("vets",vetService.findAll());
         return "vet";
     }
 }

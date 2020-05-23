@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${appName}">App Name</title>
+</head>
+<body>
+<h1 th:text="${ownerPetHeading}">Main Heading comes from Controller</h1>
+<div>
+    <p>
+        <a target="_parent" href=".">Back to Owners List</a>
+        <br><span th:text="'Id        :' +${owner.id}">Owner Id</span>
+        <br><span th:text="'First Name:' + ${owner.firstName}">Owner First Name</span>
+        <br><span th:text="'Last Name :' + ${owner.lastName}">Owner Last Name</span>
+    </p>
+</div>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Type</td>
+            <td>Age</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pet : ${pets}">
+            <td th:text="${pet.id}">petId</td>
+            <td th:text="${pet.name}">petName</td>
+            <td th:text="${pet.petType}">petType</td>
+            <td th:text="${pet.ageYears} + 'Yrs ' + ${pet.ageMonths} + 'Mos'">petAge</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

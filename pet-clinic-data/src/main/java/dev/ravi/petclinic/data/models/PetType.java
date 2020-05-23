@@ -1,7 +1,10 @@
 package dev.ravi.petclinic.data.models;
 
-public class PetType {
+public enum PetType {
 
-
+        DOG,
+        CAT,
+        BUNNY,
+        BIRD
 
 }

@@ -1,12 +1,12 @@
 package dev.ravi.petclinic.data.repositories;
 
 import dev.ravi.petclinic.data.models.BaseEntity;
-
 import java.util.*;
 
-public abstract class AbstractMapDb<Long, Entity> implements CrudService<Long, Entity> {
+public abstract class AbstractMapDb<Key extends Long, Entity extends BaseEntity> {
 
-    private final Map<Long,Entity> map = new HashMap<>();
+    private final Map<Key,Entity> map = new HashMap<>();
+    private Long maxKeyAssigned = Long.valueOf(0L);
 
     public List<Entity> findAll() {
         List<Entity> valueSet = new ArrayList<>();
@@ -14,19 +14,26 @@ public abstract class AbstractMapDb<Long, Entity> implements CrudService<Long, E
         return valueSet;
     }
 
-    public Entity findById(Long key) {
-        return  map.get(key);
+    public Entity findById(Key key) {
+        if (map.keySet().contains(key))
+            return  map.get(key);
+        else {
+            throw new RuntimeException("Key Not Found");
+        }
     }
 
     public Entity save(Entity entity) {
-        BaseEntity baseEntity = (BaseEntity) entity;
-        map.put((Long) baseEntity.getId(), entity);
+        Long nextId = (Long) maxKeyAssigned + 1L;
+        if (entity.getId() == null) {
+            entity.setId(nextId);
+        }
+        map.put((Key) entity.getId(), entity);
+        maxKeyAssigned = entity.getId();
         return entity;
     }
 
     public void delete(Entity entity) {
-        BaseEntity baseEntity = (BaseEntity) entity;
-        map.keySet().removeIf(k -> baseEntity.getId().equals(k)) ;
+        map.keySet().removeIf(k -> entity.getId().equals(k)) ;
     }
 
     public void deleteById(Long id) {

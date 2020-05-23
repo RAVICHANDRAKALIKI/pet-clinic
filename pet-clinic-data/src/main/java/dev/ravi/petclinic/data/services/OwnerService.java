@@ -1,4 +1,8 @@
 package dev.ravi.petclinic.data.services;
 
-public interface OwnerService {
+import dev.ravi.petclinic.data.models.Owner;
+
+public interface OwnerService extends CrudService<Long, Owner> {
+
+
 }

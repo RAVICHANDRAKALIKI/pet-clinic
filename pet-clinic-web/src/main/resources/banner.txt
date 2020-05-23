@@ -1,0 +1,20 @@
+
+
+DDDDDDDDDDDDD      EEEEEEEEEEEEEEEEEEEEEEVVVVVVVV           VVVVVVVV     RRRRRRRRRRRRRRRRR                  AAA   VVVVVVVV           VVVVVVVVIIIIIIIIII
+D::::::::::::DDD   E::::::::::::::::::::EV::::::V           V::::::V     R::::::::::::::::R                A:::A  V::::::V           V::::::VI::::::::I
+D:::::::::::::::DD E::::::::::::::::::::EV::::::V           V::::::V     R::::::RRRRRR:::::R              A:::::A V::::::V           V::::::VI::::::::I
+DDD:::::DDDDD:::::DEE::::::EEEEEEEEE::::EV::::::V           V::::::V     RR:::::R     R:::::R            A:::::::AV::::::V           V::::::VII::::::II
+  D:::::D    D:::::D E:::::E       EEEEEE V:::::V           V:::::V        R::::R     R:::::R           A:::::::::AV:::::V           V:::::V   I::::I
+  D:::::D     D:::::DE:::::E               V:::::V         V:::::V         R::::R     R:::::R          A:::::A:::::AV:::::V         V:::::V    I::::I
+  D:::::D     D:::::DE::::::EEEEEEEEEE      V:::::V       V:::::V          R::::RRRRRR:::::R          A:::::A A:::::AV:::::V       V:::::V     I::::I
+  D:::::D     D:::::DE:::::::::::::::E       V:::::V     V:::::V           R:::::::::::::RR          A:::::A   A:::::AV:::::V     V:::::V      I::::I
+  D:::::D     D:::::DE:::::::::::::::E        V:::::V   V:::::V            R::::RRRRRR:::::R        A:::::A     A:::::AV:::::V   V:::::V       I::::I
+  D:::::D     D:::::DE::::::EEEEEEEEEE         V:::::V V:::::V             R::::R     R:::::R      A:::::AAAAAAAAA:::::AV:::::V V:::::V        I::::I
+  D:::::D     D:::::DE:::::E                    V:::::V:::::V              R::::R     R:::::R     A:::::::::::::::::::::AV:::::V:::::V         I::::I
+  D:::::D    D:::::D E:::::E       EEEEEE        V:::::::::V               R::::R     R:::::R    A:::::AAAAAAAAAAAAA:::::AV:::::::::V          I::::I
+DDD:::::DDDDD:::::DEE::::::EEEEEEEE:::::E         V:::::::V              RR:::::R     R:::::R   A:::::A             A:::::AV:::::::V         II::::::II
+D:::::::::::::::DD E::::::::::::::::::::E          V:::::V               R::::::R     R:::::R  A:::::A               A:::::AV:::::V          I::::::::I
+D::::::::::::DDD   E::::::::::::::::::::E           V:::V                R::::::R     R:::::R A:::::A                 A:::::AV:::V           I::::::::I
+DDDDDDDDDDDDD      EEEEEEEEEEEEEEEEEEEEEE            VVV                 RRRRRRRR     RRRRRRRAAAAAAA                   AAAAAAAVVV            IIIIIIIIII
+
+

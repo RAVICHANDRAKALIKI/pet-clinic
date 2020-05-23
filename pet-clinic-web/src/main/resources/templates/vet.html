@@ -6,5 +6,26 @@
 </head>
 <body>
 <h1 th:text="${vetHeading}">Main Heading comes from Controller</h1>
+<div>
+    <a target="_parent" href="/">Back to Index</a>
+</div>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="vet : ${vets}">
+                <td th:text="${vet.id}"></td>
+                <td th:text="${vet.firstName}"></td>
+                <td th:text="${vet.lastName}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

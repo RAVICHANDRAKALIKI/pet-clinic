@@ -1,4 +1,7 @@
 package dev.ravi.petclinic.data.services;
 
-public interface VetService {
+
+import dev.ravi.petclinic.data.models.Vet;
+
+public interface VetService extends CrudService<Long, Vet>{
 }

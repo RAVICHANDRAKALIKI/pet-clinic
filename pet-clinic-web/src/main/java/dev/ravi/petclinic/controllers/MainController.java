@@ -11,7 +11,7 @@ public class MainController {
     @RequestMapping({"/","","index","index.html"})
     public String getMain(Model model) {
         model.addAttribute(StringConstants.APP_NAME_ATTR, StringConstants.APPLICATION_NAME);
-        model.addAttribute("MainHeading","Home Page");
+        model.addAttribute("mainHeading","Home Page");
         return "index";
     }
 }

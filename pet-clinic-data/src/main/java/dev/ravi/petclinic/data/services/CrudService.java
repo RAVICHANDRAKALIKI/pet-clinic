@@ -1,4 +1,4 @@
-package dev.ravi.petclinic.data.repositories;
+package dev.ravi.petclinic.data.services;
 
 import java.util.List;
 
