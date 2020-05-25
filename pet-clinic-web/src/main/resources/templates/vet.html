@@ -13,16 +13,20 @@
     <table id="vets" class="table table-striped">
         <thead>
             <tr>
-                <td>Id</td>
-                <td>First Name</td>
-                <td>Last Name</td>
+                <td style="width : 50px">Id</td>
+                <td style="width : 100px">First Name</td>
+                <td style="width : 100px">Last Name</td>
+                <td style="width : 50px">Upcoming Appointments</td>
+                <td style="width : 150px">Specialities</td>
             </tr>
         </thead>
         <tbody>
             <tr th:each="vet : ${vets}">
-                <td th:text="${vet.id}"></td>
-                <td th:text="${vet.firstName}"></td>
-                <td th:text="${vet.lastName}"></td>
+                <td th:text="${vet.getId()}"></td>
+                <td th:text="${vet.getFirstName()}"></td>
+                <td th:text="${vet.getLastName()}"></td>
+                <td th:text="${vet.getAppointmentList().size()}"></td>
+                <td th:text="${vet.getSpecialitiesAsString()}"></td>
             </tr>
         </tbody>
     </table>

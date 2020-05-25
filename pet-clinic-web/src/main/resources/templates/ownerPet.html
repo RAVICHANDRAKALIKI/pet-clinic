@@ -1,38 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
 <head>
     <meta charset="UTF-8">
     <title th:text="${appName}">App Name</title>
 </head>
 <body>
-<h1 th:text="${ownerPetHeading}">Main Heading comes from Controller</h1>
+<h2 th:text="${ownerPetHeading}">Main Heading comes from Controller</h2>
 <div>
     <p>
-        <a target="_parent" href=".">Back to Owners List</a>
-        <br><span th:text="'Id        :' +${owner.id}">Owner Id</span>
-        <br><span th:text="'First Name:' + ${owner.firstName}">Owner First Name</span>
-        <br><span th:text="'Last Name :' + ${owner.lastName}">Owner Last Name</span>
+<!--        <a target="_parent" href=".">Back to Owners List</a>-->
+<!--        <br>-->
+        <table>
+        <tr><td><span th:text="'Id        :' +${owner.id}">Owner Id</span></td></tr>
+        <tr><td><span th:text="'First Name:' + ${owner.firstName}">Owner First Name</span></td></tr>
+        <tr><td><span th:text="'Last Name :' + ${owner.lastName}">Owner Last Name</span></td></tr>
+        </table>
     </p>
-</div>
-<div>
-    <table>
-        <thead>
-        <tr>
-            <td>Id</td>
-            <td>Name</td>
-            <td>Type</td>
-            <td>Age</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="pet : ${pets}">
-            <td th:text="${pet.id}">petId</td>
-            <td th:text="${pet.name}">petName</td>
-            <td th:text="${pet.petType.name}">petType</td>
-            <td th:text="${pet.ageYears} + 'Yrs ' + ${pet.ageMonths} + 'Mos'">petAge</td>
-        </tr>
-        </tbody>
-    </table>
+    <br></br>
+    <p>
+        <table style="table table-splitted">
+            <thead>
+            <tr>
+                <th style="width : 50px">Id</th>
+                <th style="width : 100px">Name</th>
+                <th style="width : 50px">Type</th>
+                <th style="width : 200px">Age</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pet : ${pets}">
+                <td th:text="${pet.id}">petId</td>
+                <td th:text="${pet.name}">petName</td>
+                <td th:text="${pet.petType.name}">petType</td>
+                <td th:text="${pet.ageYears} + ' Years ' + ${pet.ageMonths} + ' Months'">petAge</td>
+            </tr>
+            </tbody>
+        </table>
+    </p>
 </div>
 </body>
 </html>

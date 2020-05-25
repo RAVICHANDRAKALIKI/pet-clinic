@@ -1,15 +1,55 @@
 package dev.ravi.petclinic.data.models;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-public class Appointment {
+public class Appointment extends BaseEntity{
 
+    private Vet vet;
     private Pet pet;
-    private LocalDate date;
+    private LocalDateTime datetime;
+    private String status;
 
-    public Appointment(Pet pet, LocalDate date) {
+    public Appointment(Vet vet, Pet pet, LocalDateTime datetime) {
         this.pet = pet;
-        this.date = date;
+        this.datetime = datetime;
+        this.status = "Scheduled";
+        this.vet = vet;
+    }
+
+    public void cancel() {
+        this.status = "Cancelled";
+    }
+
+    public void complete() {
+        this.status = "Completed";
+    }
+
+    public void reschedule(LocalDateTime datetime) {
+        this.vet.getAppointmentList().forEach(app -> {
+            if ( app.status.equals("Scheduled") | app.status.equals("Rescheduled") ) {
+                if (datetime.equals(app.datetime)) {
+                    throw new RuntimeException("Slot not available");
+                }
+            }
+        });
+        this.datetime = datetime;
+        this.status = "Rescheduled";
+    }
+
+    public Vet getVet() {
+        return vet;
+    }
+
+    public void setVet(Vet vet) {
+        this.vet = vet;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Pet getPet() {
@@ -20,13 +60,11 @@ public class Appointment {
         this.pet = pet;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDateTime getDatetime() {
+        return datetime;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDatetime(LocalDateTime datetime) {
+        this.datetime = datetime;
     }
-
-
 }
