@@ -21,7 +21,8 @@ class OwnerTest {
     @Order(1)
     @DisplayName("Add a Pet to the Owner")
     void ownPet() {
-        Pet pet1 = new Pet("Tyzer",PetType.DOG);
+        PetType dog = new PetType("Dog");
+        Pet pet1 = new Pet("Tyzer",dog);
         owner.ownPet(pet1);
     }
 

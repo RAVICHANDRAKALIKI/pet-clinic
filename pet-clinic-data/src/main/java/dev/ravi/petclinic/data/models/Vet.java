@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Vet extends Person {
 
+    private List<Speciality> specialities;
     private List<Appointment> appointmentList;
 
     public Vet(String firstName, String lastName) {
@@ -16,5 +17,13 @@ public class Vet extends Person {
 
     public void setAppointmentList(List<Appointment> appointmentList) {
         this.appointmentList = appointmentList;
+    }
+
+    public List<Speciality> getSpecialities() {
+        return specialities;
+    }
+
+    public void setSpecialities(List<Speciality> specialities) {
+        this.specialities = specialities;
     }
 }

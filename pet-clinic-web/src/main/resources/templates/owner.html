@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
 <head>
     <meta charset="UTF-8">
     <title th:text="${appName}">App Name</title>
 </head>
 <body>
-<h1 th:text="${ownerHeading}">Main Heading comes from Controller</h1>
+<h2 th:text="${ownerHeading}">Main Heading comes from Controller</h2>
+<!--<div>-->
+<!--    <a target="_parent" href="/">Back to Index</a>-->
+<!--</div>-->
 <div>
-    <a target="_parent" href="/">Back to Index</a>
-</div>
-<div>
-    <table>
+    <table id="owners" class="table table-striped">
         <thead>
             <tr>
-                <td>Id</td>
-                <td>First Name</td>
-                <td>Last Name</td>
+                <th style="width: 100px">Id</th>
+                <th style="width: 150px">First Name</th>
+                <th style="width: 200px">Last Name</th>
             </tr>
         </thead>
         <tbody>

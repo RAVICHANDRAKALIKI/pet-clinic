@@ -12,28 +12,41 @@ class OwnerServiceMapTest {
 
     static OwnerService ownerService;
     static PetService petService;
+    static PetTypeService petTypeService;
+
     @Test
     @Order(1)
     @DisplayName("Initialize DB")
     void setUp() {
         petService = new PetServiceMap() ;
         ownerService = new OwnerServiceMap(petService);
+        petTypeService = new PetTypeServiceMap();
     }
 
     @Test
     @Order(2)
     @DisplayName("Add Entries to Database")
     void save() {
+
+        PetType dog = new PetType("Dog");
+        dog = petTypeService.save(dog);
+
+        PetType cat = new PetType("Cat");
+        cat = petTypeService.save(cat);
+
+        PetType bunny = new PetType("Bunny");
+        bunny = petTypeService.save(bunny);
+
         Owner owner1 = new Owner("Ravi", "Chandra");
-        Pet pet1 = new Pet("Tyzer", PetType.DOG);
+        Pet pet1 = new Pet("Tyzer", dog);
         petService.save(pet1);
         owner1.ownPet(pet1);
         ownerService.save(owner1);
 
         Owner owner2 = new Owner("Ravi", "Kaliki");
-        Pet pet2 = new Pet("Tiger", PetType.CAT);
+        Pet pet2 = new Pet("Tiger", cat);
         petService.save(pet2);
-        Pet pet3 = new Pet("Chintu", PetType.BUNNY);
+        Pet pet3 = new Pet("Chintu", bunny);
         petService.save(pet3);
         owner2.ownPet(pet2).ownPet(pet3);
         ownerService.save(owner2);

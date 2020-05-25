@@ -28,7 +28,7 @@
         <tr th:each="pet : ${pets}">
             <td th:text="${pet.id}">petId</td>
             <td th:text="${pet.name}">petName</td>
-            <td th:text="${pet.petType}">petType</td>
+            <td th:text="${pet.petType.name}">petType</td>
             <td th:text="${pet.ageYears} + 'Yrs ' + ${pet.ageMonths} + 'Mos'">petAge</td>
         </tr>
         </tbody>
