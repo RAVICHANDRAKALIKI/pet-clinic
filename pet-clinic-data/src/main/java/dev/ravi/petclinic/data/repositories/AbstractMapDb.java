@@ -23,12 +23,12 @@ public abstract class AbstractMapDb<Key extends Long, Entity extends BaseEntity>
     }
 
     public Entity save(Entity entity) {
-        Long nextId = (Long) maxKeyAssigned + 1L;
         if (entity.getId() == null) {
+            Long nextId = (Long) maxKeyAssigned + 1L;
             entity.setId(nextId);
+            maxKeyAssigned = nextId;
         }
         map.put((Key) entity.getId(), entity);
-        maxKeyAssigned = entity.getId();
         return entity;
     }
 

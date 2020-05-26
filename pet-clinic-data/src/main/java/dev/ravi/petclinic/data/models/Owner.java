@@ -17,8 +17,16 @@ public class Owner extends Person{
     @Column(name="telephone")
     private String telephone;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private List<Pet> petList = new ArrayList<>();
+
+    public Owner() {
+        super();
+    }
+
+    public Owner(String firstName, String lastName) {
+        super(firstName, lastName);
+    }
 
     public Owner(String firstName, String lastName, String address, String city, String telephone) {
         super(firstName, lastName);
@@ -51,15 +59,10 @@ public class Owner extends Person{
         this.telephone = telephone;
     }
 
-    public Owner(String firstName, String lastName) {
-        super(firstName, lastName);
-        petList = new ArrayList<>();
-    }
-
-    public Owner ownPet(Pet pet) {
-        petList.add(pet);
-        return this;
-    }
+//    public Owner ownPet(Pet pet) {
+//        petList.add(pet);
+//        return this;
+//    }
     public List<Pet> getPetList() {
         return petList;
     }

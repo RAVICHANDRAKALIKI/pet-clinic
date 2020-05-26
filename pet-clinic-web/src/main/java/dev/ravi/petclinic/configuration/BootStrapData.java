@@ -29,6 +29,7 @@ public class BootStrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
         PetType dog  = new PetType("Dog");
         dog = petTypeService.save(dog);
         PetType cat  = new PetType("Cat");
@@ -36,44 +37,45 @@ public class BootStrapData implements CommandLineRunner {
         PetType bunny  = new PetType("Bunny");
         bunny = petTypeService.save(bunny);
 
-        Pet pet1 = new Pet("Tyzer", 2, 1, dog);
-        petService.save(pet1);
-        Pet pet2 = new Pet("BonBon", 1, 6, cat);
-        petService.save(pet2);
         Owner owner1 = new Owner("Ravi", "Chandra");
-        owner1.ownPet(pet1).ownPet(pet2);
         owner1.setAddress("8479 CRAGGAN LN");
         owner1.setCity("Manassas");
         owner1.setTelephone("123-456-7891");
-        ownerService.save(owner1);
+        owner1 = ownerService.save(owner1);
 
-        Pet pet3 = new Pet("Chimpu", 0, 6, bunny);
-        petService.save(pet3);
+        Pet pet1 = new Pet("Tyzer", 2, 1, dog, owner1);
+        pet1 = petService.save(pet1);
+
+        Pet pet2 = new Pet("BonBon", 1, 6, cat, owner1);
+        pet2 = petService.save(pet2);
+
+
         Owner owner2 = new Owner("Riya", "Kaliki");
-        owner2.ownPet(pet3);
         owner2.setAddress("1050 Alex Dr");
         owner2.setCity("North Brunswick");
         owner2.setTelephone("732-822-9745");
         ownerService.save(owner2);
+        Pet pet3 = new Pet("Chimpu", 0, 6, bunny, owner2);
+        pet3 = petService.save(pet3);
 
         Owner owner3 = new Owner("Ushasee", "Das", "1050 Alex Dr", "North Brunswick", "848-220-0020");
         ownerService.save(owner3);
 
         Speciality speciality1 = new Speciality("Aviators");
-        specialityService.save(speciality1);
+        speciality1 = specialityService.save(speciality1);
         Speciality speciality2 = new Speciality("Mammals");
-        specialityService.save(speciality2);
+        speciality2 = specialityService.save(speciality2);
         Speciality speciality3 = new Speciality("Wild Ones");
-        specialityService.save(speciality3);
+        speciality3 = specialityService.save(speciality3);
 
         Vet vet1 = new Vet("John", "Hopkins");
         vet1.addSpeciality(speciality1);
         vet1.addSpeciality(speciality2);
-        vetService.save(vet1);
+        vet1 = vetService.save(vet1);
 
         Vet vet2 = new Vet("Marie", "Curie");
         vet2.addSpeciality(speciality3);
-        vetService.save(vet2);
+        vet2 = vetService.save(vet2);
 
         Appointment appointment1 = new Appointment(vet1, pet3,
                 LocalDateTime.of(2020, Month.AUGUST, 10, 9, 0));

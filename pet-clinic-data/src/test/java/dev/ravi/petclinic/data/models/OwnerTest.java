@@ -19,20 +19,15 @@ class OwnerTest {
 
     @Test
     @Order(1)
-    @DisplayName("Add a Pet to the Owner")
-    void ownPet() {
-        PetType dog = new PetType("Dog");
-        Pet pet1 = new Pet("Tyzer",dog);
-        owner.ownPet(pet1);
+    @DisplayName("Verify First Name")
+    void getFirstName() {
+       assertEquals("Ravi",owner.getFirstName());
     }
 
     @Test
     @Order(2)
-    @DisplayName("Verify get PetList")
-    void getPetList() {
-        List<Pet> pets = owner.getPetList();
-        assertTrue(pets.size() == 1);
-        assertTrue(pets.get(0).getName().equals("Tyzer"));
+    @DisplayName("Verify Last Name")
+    void getLastName() {
+        assertEquals("Kaliki",owner.getLastName());
     }
-
 }

@@ -3,25 +3,47 @@ package dev.ravi.petclinic.data.services;
 import dev.ravi.petclinic.data.models.Owner;
 import dev.ravi.petclinic.data.models.Pet;
 import dev.ravi.petclinic.data.models.PetType;
+import dev.ravi.petclinic.data.repositories.PetRepository;
 import org.junit.jupiter.api.*;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.MessageSourceResolvable;
+import org.springframework.context.NoSuchMessageException;
+import org.springframework.context.annotation.Profile;
+import org.springframework.core.ResolvableType;
+import org.springframework.core.env.Environment;
+import org.springframework.core.io.Resource;
+
+import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.util.Locale;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DisplayName("Owner service Test with Map Db")
 class OwnerServiceMapTest {
 
-    static OwnerService ownerService;
-    static PetService petService;
-    static PetTypeService petTypeService;
+    static OwnerServiceMap ownerService;
+    static PetServiceMap petService;
+    static PetTypeServiceMap petTypeService;
 
     @Test
     @Order(1)
     @DisplayName("Initialize DB")
-    void setUp() {
-        petService = new PetServiceMap() ;
-        ownerService = new OwnerServiceMap(petService);
+    void setUp_MAP() {
+        ownerService = new OwnerServiceMap();
+        petService = new PetServiceMap(ownerService) ;
+        ownerService.setPetService(petService);
         petTypeService = new PetTypeServiceMap();
     }
+
 
     @Test
     @Order(2)
@@ -38,18 +60,17 @@ class OwnerServiceMapTest {
         bunny = petTypeService.save(bunny);
 
         Owner owner1 = new Owner("Ravi", "Chandra");
-        Pet pet1 = new Pet("Tyzer", dog);
+        owner1 = ownerService.save(owner1);
+
+        Pet pet1 = new Pet("Tyzer", dog, owner1);
         petService.save(pet1);
-        owner1.ownPet(pet1);
-        ownerService.save(owner1);
 
         Owner owner2 = new Owner("Ravi", "Kaliki");
-        Pet pet2 = new Pet("Tiger", cat);
+        owner2 = ownerService.save(owner2);
+        Pet pet2 = new Pet("Tiger", cat, owner2);
         petService.save(pet2);
-        Pet pet3 = new Pet("Chintu", bunny);
+        Pet pet3 = new Pet("Chintu", bunny, owner2);
         petService.save(pet3);
-        owner2.ownPet(pet2).ownPet(pet3);
-        ownerService.save(owner2);
 
     }
 

@@ -25,18 +25,23 @@ public class Pet extends BaseEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id", fetch = FetchType.EAGER)
     List<Appointment> appointmentList = new ArrayList<>();
 
-    public Pet(String name, PetType petType) {
+    public Pet() {
+    }
+
+    public Pet(String name, PetType petType, Owner owner) {
         this.name = name;
         this.petType = petType;
         this.ageMonths = Integer.valueOf(0);
         this.ageYears = Integer.valueOf(0);
+        this.setOwner(owner);
     }
 
-    public Pet(String name, Integer ageYears, Integer ageMonths, PetType petType) {
+    public Pet(String name, Integer ageYears, Integer ageMonths, PetType petType, Owner owner) {
         this.name = name;
         this.ageYears = ageYears;
         this.ageMonths = ageMonths;
         this.petType = petType;
+        this.setOwner(owner);
     }
 
     public String getName() {

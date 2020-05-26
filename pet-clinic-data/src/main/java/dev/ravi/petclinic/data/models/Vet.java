@@ -16,6 +16,9 @@ public class Vet extends Person {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "vet")
     private List<Appointment> appointmentList = new ArrayList<>();
 
+    public Vet() {
+    }
+
     public void addSpeciality(Speciality speciality) {
         this.specialities.add(speciality);
     }

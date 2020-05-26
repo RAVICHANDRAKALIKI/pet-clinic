@@ -15,9 +15,12 @@ public class Appointment extends BaseEntity{
     @Column(name="date_time")
     private LocalDateTime datetime;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     @Column(name="status")
     private StatusType status;
+
+    public Appointment() {
+    }
 
     public Appointment(Vet vet, Pet pet, LocalDateTime datetime) {
         this.pet = pet;
