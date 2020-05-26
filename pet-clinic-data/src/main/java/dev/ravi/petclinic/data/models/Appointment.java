@@ -1,39 +1,49 @@
 package dev.ravi.petclinic.data.models;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class Appointment extends BaseEntity{
 
+    @ManyToOne
     private Vet vet;
+
+    @ManyToOne
     private Pet pet;
+
+    @Column(name="date_time")
     private LocalDateTime datetime;
-    private String status;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="status")
+    private StatusType status;
 
     public Appointment(Vet vet, Pet pet, LocalDateTime datetime) {
         this.pet = pet;
         this.datetime = datetime;
-        this.status = "Scheduled";
+        this.status = StatusType.SCHEDULED;
         this.vet = vet;
     }
 
     public void cancel() {
-        this.status = "Cancelled";
+        this.status = StatusType.CANCELLED;
     }
 
     public void complete() {
-        this.status = "Completed";
+        this.status = StatusType.COMPLETED;
     }
 
     public void reschedule(LocalDateTime datetime) {
         this.vet.getAppointmentList().forEach(app -> {
-            if ( app.status.equals("Scheduled") | app.status.equals("Rescheduled") ) {
+            if ( app.status.equals(StatusType.SCHEDULED) | app.status.equals(StatusType.RESCHEDULED) ) {
                 if (datetime.equals(app.datetime)) {
                     throw new RuntimeException("Slot not available");
                 }
             }
         });
         this.datetime = datetime;
-        this.status = "Rescheduled";
+        this.status = StatusType.RESCHEDULED;
     }
 
     public Vet getVet() {
@@ -44,11 +54,11 @@ public class Appointment extends BaseEntity{
         this.vet = vet;
     }
 
-    public String getStatus() {
+    public StatusType getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(StatusType status) {
         this.status = status;
     }
 

@@ -1,14 +1,23 @@
 package dev.ravi.petclinic.data.models;
 
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Owner extends Person{
 
+    @Column(name="address")
     private String address;
+
+    @Column(name="city")
     private String city;
+
+    @Column(name="telephone")
     private String telephone;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id", fetch = FetchType.EAGER)
     private List<Pet> petList = new ArrayList<>();
 
     public Owner(String firstName, String lastName, String address, String city, String telephone) {
@@ -55,4 +64,7 @@ public class Owner extends Person{
         return petList;
     }
 
+    public void setPetList(List<Pet> petList) {
+        this.petList = petList;
+    }
 }

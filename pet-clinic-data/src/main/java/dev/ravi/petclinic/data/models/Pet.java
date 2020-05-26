@@ -1,11 +1,29 @@
 package dev.ravi.petclinic.data.models;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
 public class Pet extends BaseEntity {
 
+    @Column(name="name")
     private String name;
+
+    @Column(name="age_years")
     private Integer ageYears;
+
+    @Column(name="age_months")
     private Integer ageMonths;
+
+    @ManyToOne
     private PetType petType;
+
+    @ManyToOne
+    private Owner owner;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id", fetch = FetchType.EAGER)
+    List<Appointment> appointmentList = new ArrayList<>();
 
     public Pet(String name, PetType petType) {
         this.name = name;
@@ -51,5 +69,21 @@ public class Pet extends BaseEntity {
 
     public void setAgeMonths(Integer ageMonths) {
         this.ageMonths = ageMonths;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+
+    public List<Appointment> getAppointmentList() {
+        return appointmentList;
+    }
+
+    public void setAppointmentList(List<Appointment> appointmentList) {
+        this.appointmentList = appointmentList;
     }
 }

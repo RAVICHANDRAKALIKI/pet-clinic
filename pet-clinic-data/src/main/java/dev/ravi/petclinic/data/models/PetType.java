@@ -1,7 +1,12 @@
 package dev.ravi.petclinic.data.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class PetType extends BaseEntity {
 
+        @Column(name="type")
         private String name;
 
         public PetType(String name) {
@@ -15,10 +20,5 @@ public class PetType extends BaseEntity {
         public void setName(String name) {
                 this.name = name;
         }
-
-//        DOG,
-//        CAT,
-//        BUNNY,
-//        BIRD
 
 }
